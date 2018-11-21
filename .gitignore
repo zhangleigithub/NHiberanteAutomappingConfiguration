@@ -1,0 +1,17 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/Example/bin/Debug
+/Example/obj/Debug
+/Summer.AutomappingConfiguration/obj/Debug
+/Summer.AutomappingConfiguration/bin/Debug
+/Summer.Example.Entity/obj/Debug
+/Summer.Example.Entity/bin/Debug
+/Summer.Example.Dao/bin/Debug
+/Summer.Example.Dao/obj/Debug
+/packages/repositories.config
+/packages/NHibernate.3.3.5.4000
+/packages/MySql.Data.6.9.12
+/packages/Iesi.Collections.3.2.0.4000
+/packages/FluentNHibernate.1.4.0.0
