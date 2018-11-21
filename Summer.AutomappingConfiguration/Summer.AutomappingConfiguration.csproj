@@ -48,10 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ComponentPrefixAttribute.cs" />
+    <Compile Include="Attributes\ComponentAttribute.cs" />
+    <Compile Include="Conventions\ComponentConvention.cs" />
+    <Compile Include="Attributes\DefaultValueAttribute.cs" />
+    <Compile Include="Attributes\LengthAttribute.cs" />
+    <Compile Include="Attributes\SqlTypeAttribute.cs" />
     <Compile Include="AutoMapConfiguration.cs" />
     <Compile Include="Conventions\ClassNameConvention.cs" />
     <Compile Include="Attributes\DiscriminatedAttribute.cs" />
     <Compile Include="Attributes\ExtendsAttribute.cs" />
+    <Compile Include="Conventions\CompositeIdentityConvention.cs" />
     <Compile Include="Conventions\HasOneConvention.cs" />
     <Compile Include="Conventions\HasManyConvention.cs" />
     <Compile Include="Conventions\JoinedSubclassConvention.cs" />

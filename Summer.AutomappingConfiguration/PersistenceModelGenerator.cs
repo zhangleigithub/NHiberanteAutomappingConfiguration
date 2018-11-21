@@ -58,6 +58,11 @@ namespace Summer.AutomappingConfiguration
                 mappings.IncludeBase(item);
             }
 
+            foreach (var item in assemblies)
+            {
+                mappings.UseOverridesFromAssembly(item);
+            }
+
             mappings.Conventions.Setup(this.GetConventions());
 
             return mappings;
@@ -73,7 +78,9 @@ namespace Summer.AutomappingConfiguration
             {
                 finder.Add<ClassNameConvention>();
                 finder.Add<PrimaryKeyConvention>();
+                finder.Add<CompositeIdentityConvention>();
                 finder.Add<PropertyConvention>();
+                finder.Add<ComponentConvention>();
                 finder.Add<ReferenceConvention>();
                 finder.Add<HasOneConvention>();
                 finder.Add<HasManyConvention>();

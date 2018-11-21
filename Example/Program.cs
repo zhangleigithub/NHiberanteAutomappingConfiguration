@@ -18,6 +18,7 @@ namespace Example
             {
                 Console.WriteLine(item.Id);
                 Console.WriteLine(item.Name);
+                Console.WriteLine(item.UserEx.Remark);
             }
 
             Console.Read();

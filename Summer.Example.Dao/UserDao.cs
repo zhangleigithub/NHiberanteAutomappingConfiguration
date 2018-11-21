@@ -23,11 +23,10 @@ namespace Summer.Example.Dao
         {
             using (ISession session = this.SessionFactory.OpenSession())
             {
-                User user = new User() { Name = "user", Type = "0" };
+                User user = new User() { Name = "user", UserEx = new UserEx() { Remark = "123" } };
                 Authority authority = new Authority() { Name = "测试" };
                 user.Authority = new List<Authority>(new Authority[] { authority });
                 session.Save(user);
-                //session.Save(new User() { Name = "123", Authority = authority });
                 session.Flush();
             }
         }

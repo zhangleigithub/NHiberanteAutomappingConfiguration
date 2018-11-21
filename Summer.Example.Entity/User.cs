@@ -18,7 +18,13 @@ namespace Summer.Example.Entity
         public virtual string Name { get; set; }
 
         [Column("Type")]
+        [Length(1)]
+        [DefaultValue("1")]
+        [SqlType("nchar")]
         public virtual string Type { get; set; }
+
+        [ComponentPrefix("Ex")]
+        public virtual UserEx UserEx { get; set; } 
 
         [Column("AuthorityID")]
         public virtual IList<Authority> Authority { get; set; }
