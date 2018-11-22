@@ -50,6 +50,9 @@
   <ItemGroup>
     <Compile Include="Attributes\ComponentPrefixAttribute.cs" />
     <Compile Include="Attributes\ComponentAttribute.cs" />
+    <Compile Include="Attributes\CompositeIdAttribute.cs" />
+    <Compile Include="Attributes\IgnoreAttibute.cs" />
+    <Compile Include="MappingOverride\CompositeIdMappingOverride.cs" />
     <Compile Include="Conventions\ComponentConvention.cs" />
     <Compile Include="Attributes\DefaultValueAttribute.cs" />
     <Compile Include="Attributes\LengthAttribute.cs" />
@@ -62,15 +65,18 @@
     <Compile Include="Conventions\HasOneConvention.cs" />
     <Compile Include="Conventions\HasManyConvention.cs" />
     <Compile Include="Conventions\JoinedSubclassConvention.cs" />
+    <Compile Include="Conventions\KeyManyToOneConvention.cs" />
+    <Compile Include="Conventions\KeyPropertyConvention.cs" />
+    <Compile Include="MappingOverride\CreateMappingOverride.cs" />
     <Compile Include="Enums\PrimaryKeys.cs" />
-    <Compile Include="NHibernateFactory.cs" />
+    <Compile Include="DbContent.cs" />
     <Compile Include="Attributes\TableAttribute.cs" />
     <Compile Include="Attributes\ColumnAttribute.cs" />
     <Compile Include="Conventions\EnumConvention.cs" />
     <Compile Include="Conventions\HasManyToManyConvention.cs" />
     <Compile Include="PersistenceModelGenerator.cs" />
-    <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
-    <Compile Include="Conventions\PrimaryKeyConvention.cs" />
+    <Compile Include="Attributes\IdAttribute.cs" />
+    <Compile Include="Conventions\IdConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Conventions\PropertyConvention.cs" />
     <Compile Include="Conventions\ReferenceConvention.cs" />

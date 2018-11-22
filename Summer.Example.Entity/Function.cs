@@ -13,7 +13,7 @@ namespace Summer.Example.Entity
     [Table("Function")]
     public class Function
     {
-        [PrimaryKey(PrimaryKeys.Increment)]
+        [Id(PrimaryKeys.Increment)]
         [Column("ID")]
         public virtual long Id { get; set; }
 

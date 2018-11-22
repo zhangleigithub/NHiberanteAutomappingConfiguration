@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authority.cs" />
+    <Compile Include="CompositeIdTest.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="SuperManPerson.cs" />

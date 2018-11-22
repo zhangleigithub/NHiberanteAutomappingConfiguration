@@ -10,7 +10,7 @@ namespace Summer.Example.Entity
     [Table("User")]
     public class User
     {
-        [PrimaryKey(PrimaryKeys.Guid)]
+        [Id(PrimaryKeys.Guid)]
         [Column("ID")]
         public virtual Guid Id { get; set; }
 

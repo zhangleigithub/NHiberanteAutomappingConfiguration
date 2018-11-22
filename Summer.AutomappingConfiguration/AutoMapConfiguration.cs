@@ -29,7 +29,17 @@ namespace Summer.AutomappingConfiguration
         /// <returns>bool</returns>
         public override bool ShouldMap(Type type)
         {
-            return (type.IsClass);
+            return type.IsClass && type.GetCustomAttributes(typeof(IgnoreAttribute), true).Count() == 0;
+        }
+
+        /// <summary>
+        /// 是否映射
+        /// </summary>
+        /// <param name="type">成员</param>
+        /// <returns>bool</returns>
+        public override bool ShouldMap(Member member)
+        {
+            return !member.IsMethod && member.DeclaringType.GetProperty(member.Name).GetCustomAttributes(typeof(IgnoreAttribute), true).Count() == 0;
         }
 
         /// <summary>
@@ -39,7 +49,7 @@ namespace Summer.AutomappingConfiguration
         /// <returns>bool</returns>
         public override bool IsId(Member member)
         {
-            return member.DeclaringType.GetProperty(member.Name).GetCustomAttributes(typeof(PrimaryKeyAttribute), true).Count() > 0;
+            return member.DeclaringType.GetProperty(member.Name).GetCustomAttributes(typeof(IdAttribute), true).Count() > 0;
         }
 
         /// <summary>

@@ -1,6 +1,8 @@
 ﻿using FluentNHibernate.Automapping;
 using FluentNHibernate.Conventions;
+using Summer.AutomappingConfiguration.Attributes;
 using Summer.AutomappingConfiguration.Conventions;
+using Summer.AutomappingConfiguration.MappingOverride;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,30 +16,7 @@ namespace Summer.AutomappingConfiguration
     /// </summary>
     internal class PersistenceModelGenerator
     {
-        #region 属性
-
-        /// <summary>
-        /// 忽略基类
-        /// </summary>
-        public IList<Type> IgnoredBaseTypes { get; set; }
-
-        /// <summary>
-        /// 包含基类
-        /// </summary>
-        public IList<Type> IncludeBaseTypes { get; set; }
-
-        #endregion
-
         #region 方法
-
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public PersistenceModelGenerator()
-        {
-            this.IgnoredBaseTypes = new List<Type>();
-            this.IncludeBaseTypes = new List<Type>();
-        }
 
         /// <summary>
         /// 生成
@@ -48,19 +27,19 @@ namespace Summer.AutomappingConfiguration
         {
             var mappings = AutoMap.Assemblies(new AutoMapConfiguration(), assemblies);
 
-            foreach (var item in this.IgnoredBaseTypes)
-            {
-                mappings.IgnoreBase(item);
-            }
-
-            foreach (var item in this.IncludeBaseTypes)
-            {
-                mappings.IncludeBase(item);
-            }
+            MethodInfo createMappingOverride = typeof(CreateMappingOverride).GetMethod("Create");
 
             foreach (var item in assemblies)
             {
-                mappings.UseOverridesFromAssembly(item);
+                foreach (var itemType in item.GetTypes())
+                {
+                    if (itemType.GetCustomAttributes(typeof(CompositeIdAttribute), true).Length > 0)
+                    {
+                        MethodInfo method = createMappingOverride.MakeGenericMethod(itemType);
+                        Type t = method.Invoke(null, null) as Type;
+                        mappings.Override(t);
+                    }
+                }
             }
 
             mappings.Conventions.Setup(this.GetConventions());
@@ -69,17 +48,18 @@ namespace Summer.AutomappingConfiguration
         }
 
         /// <summary>
-        /// 协议
+        /// 规则
         /// </summary>
-        /// <returns>协议</returns>
+        /// <returns>规则</returns>
         protected Action<IConventionFinder> GetConventions()
         {
             return finder =>
             {
                 finder.Add<ClassNameConvention>();
-                finder.Add<PrimaryKeyConvention>();
+                finder.Add<IdConvention>();
                 finder.Add<CompositeIdentityConvention>();
                 finder.Add<PropertyConvention>();
+                finder.Add<KeyPropertyConvention>();
                 finder.Add<ComponentConvention>();
                 finder.Add<ReferenceConvention>();
                 finder.Add<HasOneConvention>();

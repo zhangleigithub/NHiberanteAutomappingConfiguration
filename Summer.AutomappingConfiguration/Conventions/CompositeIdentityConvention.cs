@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Conventions;
+using Summer.AutomappingConfiguration.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,16 @@ namespace Summer.AutomappingConfiguration.Conventions
         /// <param name="instance"></param>
         public void Apply(FluentNHibernate.Conventions.Instances.ICompositeIdentityInstance instance)
         {
-            //instance.
+            foreach (var item in instance.KeyProperties)
+            {
+                object[] attrs = item.EntityType.GetProperty(item.Name).GetCustomAttributes(true);
+                LengthAttribute length = attrs.FirstOrDefault(x => typeof(LengthAttribute).IsInstanceOfType(x)) as LengthAttribute;
+
+                if (length != null)
+                {
+                    item.Length(length.Value);
+                }
+            }
         }
 
         #endregion

@@ -9,21 +9,21 @@ using System.Text;
 namespace Summer.AutomappingConfiguration.Conventions
 {
     /// <summary>
-    /// PrimaryKeyConvention
+    /// IdConvention
     /// </summary>
-    internal class PrimaryKeyConvention : IIdConvention
+    internal class IdConvention : IIdConvention
     {
         #region 方法
 
         /// <summary>
-        /// 
+        /// Id规则
         /// </summary>
         /// <param name="instance"></param>
         public virtual void Apply(IIdentityInstance instance)
         {
-            object[] attrs = instance.EntityType.GetProperty("Id").GetCustomAttributes(true);
+            object[] attrs = instance.EntityType.GetProperty(instance.Name).GetCustomAttributes(true);
 
-            PrimaryKeyAttribute pk = attrs.FirstOrDefault(x => typeof(PrimaryKeyAttribute).IsInstanceOfType(x)) as PrimaryKeyAttribute;
+            IdAttribute pk = attrs.FirstOrDefault(x => typeof(IdAttribute).IsInstanceOfType(x)) as IdAttribute;
 
             ColumnAttribute column = attrs.FirstOrDefault(x => typeof(ColumnAttribute).IsInstanceOfType(x)) as ColumnAttribute;
 

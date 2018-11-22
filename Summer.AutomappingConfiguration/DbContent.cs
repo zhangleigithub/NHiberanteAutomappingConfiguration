@@ -15,9 +15,9 @@ using NHibernate.Cfg;
 namespace Summer.AutomappingConfiguration
 {
     /// <summary>
-    /// NHibernateFactory
+    /// DbContent
     /// </summary>
-    public class NHibernateFactory
+    public class DbContent
     {
         /// <summary>
         /// Mysql
@@ -27,19 +27,9 @@ namespace Summer.AutomappingConfiguration
         /// <param name="ignoredBaseTypes">ignoredBaseTypes</param>
         /// <param name="includeBaseTypes">includeBaseTypes</param>
         /// <returns>ISessionFactory</returns>
-        public static ISessionFactory CreateMysqlSessionFactory(string connectionString, string[] assemblies, Type[] ignoredBaseTypes = null, Type[] includeBaseTypes = null)
+        public static ISessionFactory CreateMysqlSessionFactory(string connectionString, string[] assemblies)
         {
             PersistenceModelGenerator generator = new PersistenceModelGenerator();
-
-            if (ignoredBaseTypes != null)
-            {
-                generator.IgnoredBaseTypes.ToList().AddRange(ignoredBaseTypes);
-            }
-
-            if (includeBaseTypes != null)
-            {
-                generator.IncludeBaseTypes.ToList().AddRange(includeBaseTypes);
-            }
 
             string exportDir = "AppData\\Automapping";
 
@@ -67,19 +57,9 @@ namespace Summer.AutomappingConfiguration
         /// <param name="ignoredBaseTypes">ignoredBaseTypes</param>
         /// <param name="includeBaseTypes">includeBaseTypes</param>
         /// <returns>ISessionFactory</returns>
-        public static ISessionFactory CreateSessionFactory(string configFile, string[] assemblies, Type[] ignoredBaseTypes = null, Type[] includeBaseTypes = null)
+        public static ISessionFactory CreateSessionFactory(string configFile, string[] assemblies)
         {
             PersistenceModelGenerator generator = new PersistenceModelGenerator();
-
-            if (ignoredBaseTypes != null)
-            {
-                generator.IgnoredBaseTypes.ToList().AddRange(ignoredBaseTypes);
-            }
-
-            if (includeBaseTypes != null)
-            {
-                generator.IncludeBaseTypes.ToList().AddRange(includeBaseTypes);
-            }
 
             string exportDir = "AppData\\Automapping";
 
@@ -88,14 +68,21 @@ namespace Summer.AutomappingConfiguration
                 Directory.CreateDirectory(exportDir);
             }
 
-            var configuration = Fluently.Configure(new Configuration().Configure(configFile))
+            try
+            {
+                var configuration = Fluently.Configure(new Configuration().Configure(configFile))
                 .Mappings(m => m.AutoMappings.Add(generator.Generate(assemblies.Select(Assembly.LoadFrom).ToArray())).ExportTo(exportDir))
                 .BuildConfiguration();
 
-            var exporter = new SchemaExport(configuration);
-            exporter.Execute(true, true, false);
+                var exporter = new SchemaExport(configuration);
+                exporter.Execute(true, true, false);
 
-            return configuration.BuildSessionFactory();
+                return configuration.BuildSessionFactory();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

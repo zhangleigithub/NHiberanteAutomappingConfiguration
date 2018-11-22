@@ -7,9 +7,9 @@ using System.Text;
 namespace Summer.AutomappingConfiguration.Attributes
 {
     /// <summary>
-    /// PrimaryKeyAttribute
+    /// IdAttribute
     /// </summary>
-    public class PrimaryKeyAttribute : Attribute
+    public class IdAttribute : Attribute
     {
         #region 属性
 
@@ -26,7 +26,7 @@ namespace Summer.AutomappingConfiguration.Attributes
         /// 构造函数
         /// </summary>
         /// <param name="value">Value</param>
-        public PrimaryKeyAttribute(PrimaryKeys value)
+        public IdAttribute(PrimaryKeys value)
         {
             this.Value = value;
         }

@@ -10,7 +10,7 @@ namespace Summer.Example.Entity
     [Table("Authority")]
     public class Authority
     {
-        [PrimaryKey(PrimaryKeys.Increment)]
+        [Id(PrimaryKeys.Increment)]
         [Column("ID")]
         public virtual long Id { get; set; }
 

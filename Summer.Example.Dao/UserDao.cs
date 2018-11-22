@@ -15,7 +15,7 @@ namespace Summer.Example.Dao
 
         public UserDao()
         {
-            this.SessionFactory = NHibernateFactory.CreateSessionFactory("MySql.cfg.xml", new string[] { "Summer.Example.Entity.dll" });
+            this.SessionFactory = DbContent.CreateSessionFactory("MySql.cfg.xml", new string[] { "Summer.Example.Entity.dll" });
             //this.SessionFactory = NHibernateFactory.CreateMysqlSessionFactory("Database=HBTest;Data Source=localhost;User Id=root;Password=jdsn;charset=utf8", new string[] { "Summer.Example.Entity.dll" });
         }
 
