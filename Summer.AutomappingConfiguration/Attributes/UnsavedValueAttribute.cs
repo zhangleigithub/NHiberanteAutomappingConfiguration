@@ -6,12 +6,12 @@ using System.Text;
 namespace Summer.AutomappingConfiguration.Attributes
 {
     /// <summary>
-    /// SqlTypeAttribute
+    /// UnsavedValueAttribute
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
-    public class SqlTypeAttribute : Attribute
+    public class UnsavedValueAttribute : Attribute
     {
-        #region 属性
+         #region 属性
 
         /// <summary>
         /// value
@@ -26,7 +26,7 @@ namespace Summer.AutomappingConfiguration.Attributes
         /// 构造函数
         /// </summary>
         /// <param name="value">value</param>
-        public SqlTypeAttribute(string value)
+        public UnsavedValueAttribute(string value)
         {
             this.Value = value;
         }

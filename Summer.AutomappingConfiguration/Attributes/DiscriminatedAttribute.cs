@@ -8,6 +8,7 @@ namespace Summer.AutomappingConfiguration.Attributes
     /// <summary>
     /// DiscriminatedAttribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public class DiscriminatedAttribute : Attribute
     {
         #region 属性

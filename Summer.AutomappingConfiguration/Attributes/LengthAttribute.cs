@@ -8,6 +8,7 @@ namespace Summer.AutomappingConfiguration.Attributes
     /// <summary>
     /// LengthAttribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Property)]
     public class LengthAttribute : Attribute
     {
         #region 属性

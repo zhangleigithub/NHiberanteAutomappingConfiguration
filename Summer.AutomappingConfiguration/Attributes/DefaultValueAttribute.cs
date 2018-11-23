@@ -8,6 +8,7 @@ namespace Summer.AutomappingConfiguration.Attributes
     /// <summary>
     /// DefaultValueAttribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Property)]
     public class DefaultValueAttribute : Attribute
     {
         #region 属性

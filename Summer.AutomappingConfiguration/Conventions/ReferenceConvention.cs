@@ -24,8 +24,20 @@ namespace Summer.AutomappingConfiguration.Conventions
         {
             object[] attrs = instance.EntityType.GetProperty(instance.Property.Name).GetCustomAttributes(true);
             ColumnAttribute column = attrs.FirstOrDefault(x => typeof(ColumnAttribute).IsInstanceOfType(x)) as ColumnAttribute;
-            instance.Column(column.Name);
-            instance.LazyLoad();
+            LazyAttribute lazy = attrs.FirstOrDefault(x => typeof(LazyAttribute).IsInstanceOfType(x)) as LazyAttribute;
+
+            if (column != null)
+            {
+                instance.Column(column.Name);
+            }
+
+            //Cascade
+            SetProperty.ICascadeInstance(instance.Cascade, attrs);
+
+            if (lazy != null)
+            {
+                instance.LazyLoad();
+            }
         }
 
         #endregion

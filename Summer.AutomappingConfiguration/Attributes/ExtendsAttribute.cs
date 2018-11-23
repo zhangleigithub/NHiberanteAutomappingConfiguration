@@ -8,6 +8,7 @@ namespace Summer.AutomappingConfiguration.Attributes
     /// <summary>
     /// ExtendsAttribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public class ExtendsAttribute : Attribute
     {
         #region 属性

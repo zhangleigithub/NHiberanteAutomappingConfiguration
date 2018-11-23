@@ -14,7 +14,7 @@ namespace Summer.AutomappingConfiguration.Conventions
     internal class ClassNameConvention : IClassConvention
     {
         #region 方法
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -23,7 +23,11 @@ namespace Summer.AutomappingConfiguration.Conventions
         {
             object[] attrs = instance.EntityType.GetCustomAttributes(true);
             TableAttribute table = attrs.FirstOrDefault(x => typeof(TableAttribute).IsInstanceOfType(x)) as TableAttribute;
-            instance.Table(table.Name);
+
+            if (table != null)
+            {
+                instance.Table(table.Name);
+            }
         }
 
         #endregion

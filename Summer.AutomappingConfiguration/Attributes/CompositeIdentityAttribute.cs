@@ -6,10 +6,10 @@ using System.Text;
 namespace Summer.AutomappingConfiguration.Attributes
 {
     /// <summary>
-    /// IgnoreAttribute
+    /// CompositeIdAttribute
     /// </summary>
-    [AttributeUsage(AttributeTargets.All)]
-    public class IgnoreAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
+    public class CompositeIdentityAttribute : Attribute
     {
     }
 }

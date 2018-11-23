@@ -33,7 +33,7 @@ namespace Summer.AutomappingConfiguration
             {
                 foreach (var itemType in item.GetTypes())
                 {
-                    if (itemType.GetCustomAttributes(typeof(CompositeIdAttribute), true).Length > 0)
+                    if (itemType.GetCustomAttributes(typeof(CompositeIdentityAttribute), true).Length > 0)
                     {
                         MethodInfo method = createMappingOverride.MakeGenericMethod(itemType);
                         Type t = method.Invoke(null, null) as Type;

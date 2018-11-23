@@ -9,6 +9,7 @@ namespace Summer.AutomappingConfiguration.Attributes
     /// <summary>
     /// IdAttribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Property)]
     public class IdAttribute : Attribute
     {
         #region 属性

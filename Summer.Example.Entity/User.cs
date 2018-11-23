@@ -21,6 +21,7 @@ namespace Summer.Example.Entity
         [Length(1)]
         [DefaultValue("1")]
         [SqlType("nchar")]
+        [Unique()]
         public virtual string Type { get; set; }
 
         [ComponentPrefix("Ex")]

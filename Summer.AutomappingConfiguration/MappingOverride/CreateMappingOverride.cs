@@ -8,7 +8,7 @@ namespace Summer.AutomappingConfiguration.MappingOverride
     /// <summary>
     /// CreateMappingOverride
     /// </summary>
-    public class CreateMappingOverride
+    internal class CreateMappingOverride
     {
         /// <summary>
         /// Create

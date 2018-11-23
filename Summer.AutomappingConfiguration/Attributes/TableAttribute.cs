@@ -8,6 +8,7 @@ namespace Summer.AutomappingConfiguration.Attributes
     /// <summary>
     /// TableAttribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public class TableAttribute : Attribute
     {
         #region 属性

@@ -48,10 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\CascadeAttribute.cs" />
+    <Compile Include="Attributes\CheckAttribute.cs" />
     <Compile Include="Attributes\ComponentPrefixAttribute.cs" />
     <Compile Include="Attributes\ComponentAttribute.cs" />
-    <Compile Include="Attributes\CompositeIdAttribute.cs" />
+    <Compile Include="Attributes\CompositeIdentityAttribute.cs" />
+    <Compile Include="Attributes\FormulaAttribute.cs" />
     <Compile Include="Attributes\IgnoreAttibute.cs" />
+    <Compile Include="Attributes\IndexAttribute.cs" />
+    <Compile Include="Attributes\InsertAttribute.cs" />
+    <Compile Include="Attributes\InverseAttribute.cs" />
+    <Compile Include="Attributes\LazyAttribute.cs" />
+    <Compile Include="Attributes\PrecisionAttribute.cs" />
+    <Compile Include="Attributes\ScaleAttribute.cs" />
+    <Compile Include="Attributes\UniqueAttribute.cs" />
+    <Compile Include="Attributes\UnsavedValueAttribute.cs" />
+    <Compile Include="Attributes\UpdateAttribute.cs" />
+    <Compile Include="Conventions\SetProperty.cs" />
     <Compile Include="MappingOverride\CompositeIdMappingOverride.cs" />
     <Compile Include="Conventions\ComponentConvention.cs" />
     <Compile Include="Attributes\DefaultValueAttribute.cs" />

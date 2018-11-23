@@ -6,9 +6,10 @@ using System.Text;
 namespace Summer.AutomappingConfiguration.Attributes
 {
     /// <summary>
-    /// CompositeIdAttribute
+    /// InverseAttribute
     /// </summary>
-    public class CompositeIdAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Property)]
+    public class InverseAttribute : Attribute
     {
     }
 }

@@ -10,15 +10,15 @@ using System.Text;
 namespace Summer.Example.Entity
 {
     [Table("CompositeIdTest")]
-    [CompositeId()]
+    [CompositeIdentity()]
     public class CompositeIdTest
     {
-        [CompositeId()]
+        [CompositeIdentity()]
         [Column("Key1")]
         [Length(5)]
         public virtual string Key1 { get; set; }
 
-        [CompositeId()]
+        [CompositeIdentity()]
         [Column("Key2")]
         public virtual string Key2 { get; set; }
 

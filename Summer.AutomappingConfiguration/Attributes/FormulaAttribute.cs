@@ -6,10 +6,10 @@ using System.Text;
 namespace Summer.AutomappingConfiguration.Attributes
 {
     /// <summary>
-    /// SqlTypeAttribute
+    /// FormulaAttribute
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
-    public class SqlTypeAttribute : Attribute
+    public class FormulaAttribute : Attribute
     {
         #region 属性
 
@@ -26,7 +26,7 @@ namespace Summer.AutomappingConfiguration.Attributes
         /// 构造函数
         /// </summary>
         /// <param name="value">value</param>
-        public SqlTypeAttribute(string value)
+        public FormulaAttribute(string value)
         {
             this.Value = value;
         }

@@ -8,6 +8,7 @@ namespace Summer.AutomappingConfiguration.Attributes
     /// <summary>
     /// ComponentAttribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
     public class ComponentAttribute : Attribute
     {
     }

@@ -6,17 +6,17 @@ using System.Text;
 namespace Summer.AutomappingConfiguration.Attributes
 {
     /// <summary>
-    /// SqlTypeAttribute
+    /// PrecisionAttribute
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
-    public class SqlTypeAttribute : Attribute
+    public class PrecisionAttribute : Attribute
     {
         #region 属性
 
         /// <summary>
         /// value
         /// </summary>
-        public string Value { get; set; }
+        public int Value { get; set; }
 
         #endregion
 
@@ -26,7 +26,7 @@ namespace Summer.AutomappingConfiguration.Attributes
         /// 构造函数
         /// </summary>
         /// <param name="value">value</param>
-        public SqlTypeAttribute(string value)
+        public PrecisionAttribute(int value)
         {
             this.Value = value;
         }

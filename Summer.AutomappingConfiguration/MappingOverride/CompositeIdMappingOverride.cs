@@ -14,7 +14,7 @@ namespace Summer.AutomappingConfiguration.MappingOverride
     /// CompositeIdMappingOverride
     /// </summary>
     /// <typeparam name="T">T</typeparam>
-    public class CompositeIdMappingOverride<T> : IAutoMappingOverride<T>
+    internal class CompositeIdMappingOverride<T> : IAutoMappingOverride<T>
     {
         /// <summary>
         /// Override
@@ -26,7 +26,7 @@ namespace Summer.AutomappingConfiguration.MappingOverride
 
             foreach (var item in typeof(T).GetProperties())
             {
-                if (item.GetCustomAttributes(typeof(CompositeIdAttribute), true).Length > 0)
+                if (item.GetCustomAttributes(typeof(CompositeIdentityAttribute), true).Length > 0)
                 {
                     ParameterExpression parameter = System.Linq.Expressions.Expression.Parameter(typeof(T), "x");
                     System.Linq.Expressions.Expression member = System.Linq.Expressions.Expression.PropertyOrField(parameter, item.Name);

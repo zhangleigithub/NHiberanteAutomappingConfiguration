@@ -6,10 +6,10 @@ using System.Text;
 namespace Summer.AutomappingConfiguration.Attributes
 {
     /// <summary>
-    /// IgnoreAttribute
+    /// UpdateAttribute
     /// </summary>
-    [AttributeUsage(AttributeTargets.All)]
-    public class IgnoreAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Property)]
+    public class UpdateAttribute : Attribute
     {
     }
 }

@@ -12,6 +12,7 @@ namespace Summer.Example.Entity
     {
         [Id(PrimaryKeys.Increment)]
         [Column("ID")]
+        [UnsavedValue("0")]
         public virtual long Id { get; set; }
 
         [Column("Name")]

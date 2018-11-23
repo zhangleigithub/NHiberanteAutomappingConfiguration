@@ -17,7 +17,7 @@ namespace Summer.AutomappingConfiguration
     /// <summary>
     /// DbContent
     /// </summary>
-    public class DbContent
+    public static class DbContent
     {
         /// <summary>
         /// Mysql
@@ -68,21 +68,14 @@ namespace Summer.AutomappingConfiguration
                 Directory.CreateDirectory(exportDir);
             }
 
-            try
-            {
-                var configuration = Fluently.Configure(new Configuration().Configure(configFile))
-                .Mappings(m => m.AutoMappings.Add(generator.Generate(assemblies.Select(Assembly.LoadFrom).ToArray())).ExportTo(exportDir))
-                .BuildConfiguration();
+            var configuration = Fluently.Configure(new Configuration().Configure(configFile))
+            .Mappings(m => m.AutoMappings.Add(generator.Generate(assemblies.Select(Assembly.LoadFrom).ToArray())).ExportTo(exportDir))
+            .BuildConfiguration();
 
-                var exporter = new SchemaExport(configuration);
-                exporter.Execute(true, true, false);
+            var exporter = new SchemaExport(configuration);
+            exporter.Execute(true, true, false);
 
-                return configuration.BuildSessionFactory();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return configuration.BuildSessionFactory();
         }
     }
 }

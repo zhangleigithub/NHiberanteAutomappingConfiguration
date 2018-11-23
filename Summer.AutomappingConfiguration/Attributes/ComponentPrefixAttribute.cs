@@ -8,6 +8,7 @@ namespace Summer.AutomappingConfiguration.Attributes
     /// <summary>
     /// ComponentPrefixAttribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Property)]
     public class ComponentPrefixAttribute : Attribute
     {
         #region 属性

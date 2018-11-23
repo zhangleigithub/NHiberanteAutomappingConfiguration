@@ -26,6 +26,13 @@ namespace Summer.AutomappingConfiguration.Conventions
             LengthAttribute length = attrs.FirstOrDefault(x => typeof(LengthAttribute).IsInstanceOfType(x)) as LengthAttribute;
             DefaultValueAttribute defaultValue = attrs.FirstOrDefault(x => typeof(DefaultValueAttribute).IsInstanceOfType(x)) as DefaultValueAttribute;
             SqlTypeAttribute sqlType = attrs.FirstOrDefault(x => typeof(SqlTypeAttribute).IsInstanceOfType(x)) as SqlTypeAttribute;
+            LazyAttribute lazy = attrs.FirstOrDefault(x => typeof(LazyAttribute).IsInstanceOfType(x)) as LazyAttribute;
+            CheckAttribute check = attrs.FirstOrDefault(x => typeof(CheckAttribute).IsInstanceOfType(x)) as CheckAttribute;
+            FormulaAttribute formula = attrs.FirstOrDefault(x => typeof(FormulaAttribute).IsInstanceOfType(x)) as FormulaAttribute;
+            IndexAttribute index = attrs.FirstOrDefault(x => typeof(IndexAttribute).IsInstanceOfType(x)) as IndexAttribute;
+            PrecisionAttribute percision = attrs.FirstOrDefault(x => typeof(PrecisionAttribute).IsInstanceOfType(x)) as PrecisionAttribute;
+            ScaleAttribute scale = attrs.FirstOrDefault(x => typeof(ScaleAttribute).IsInstanceOfType(x)) as ScaleAttribute;
+            UniqueAttribute unique = attrs.FirstOrDefault(x => typeof(UniqueAttribute).IsInstanceOfType(x)) as UniqueAttribute;
 
             if (column != null)
             {
@@ -45,6 +52,41 @@ namespace Summer.AutomappingConfiguration.Conventions
             if (sqlType != null)
             {
                 instance.CustomSqlType(sqlType.Value);
+            }
+
+            if (lazy != null)
+            {
+                instance.LazyLoad();
+            }
+
+            if (check != null)
+            {
+                instance.Check(check.Value);
+            }
+
+            if (formula != null)
+            {
+                instance.Formula(formula.Value);
+            }
+
+            if (index != null)
+            {
+                instance.Index(index.Value);
+            }
+
+            if (percision != null)
+            {
+                instance.Precision(percision.Value);
+            }
+
+            if (scale != null)
+            {
+                instance.Scale(scale.Value);
+            }
+            
+            if (unique != null)
+            {
+                instance.Unique();
             }
         }
 
