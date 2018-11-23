@@ -25,6 +25,11 @@ namespace Summer.Example.Entity
         [Column("Remark")]
         public virtual string Remark { get; set; }
 
+        [Version()]
+        [Column("Version1")]
+        [UnsavedValue("null")]
+        public virtual int Version { get; set; }
+
         /// <summary>
         /// Equals
         /// </summary>

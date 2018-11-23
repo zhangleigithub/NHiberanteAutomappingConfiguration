@@ -53,6 +53,16 @@ namespace Summer.AutomappingConfiguration
         }
 
         /// <summary>
+        /// Version
+        /// </summary>
+        /// <param name="member">成员</param>
+        /// <returns>Version</returns>
+        public override bool IsVersion(Member member)
+        {
+            return member.DeclaringType.GetProperty(member.Name).GetCustomAttributes(typeof(VersionAttribute), true).Count() > 0;
+        }
+
+        /// <summary>
         /// 组件
         /// </summary>
         /// <param name="type">类型</param>

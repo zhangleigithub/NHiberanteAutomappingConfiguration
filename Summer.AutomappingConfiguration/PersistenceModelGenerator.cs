@@ -51,7 +51,7 @@ namespace Summer.AutomappingConfiguration
         /// 规则
         /// </summary>
         /// <returns>规则</returns>
-        protected Action<IConventionFinder> GetConventions()
+        private Action<IConventionFinder> GetConventions()
         {
             return finder =>
             {
@@ -68,6 +68,7 @@ namespace Summer.AutomappingConfiguration
                 finder.Add<SubclassConvention>();
                 finder.Add<JoinedSubclassConvention>();
                 finder.Add<EnumConvention>();
+                finder.Add<VersionConvention>();
             };
         }
 
